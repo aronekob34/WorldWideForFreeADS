@@ -1,0 +1,138 @@
+
+<div class="wrapper">
+    <div class="sidebar" data-color="azure" data-image="">
+
+    <!--https://s3.eu-central-1.amazonaws.com/freeads/sidebar-4.jpg
+
+        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+        Tip 2: you can also add an image using data-image tag
+
+    -->
+
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                <div class="simple-text">
+                    Free Ads Worldwide
+                </div>
+            </div>
+
+            <ul class="nav">
+                <!--li>
+                    <a href="dashboard.html">
+                        <i class="pe-7s-home"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li-->
+                <li class="" id="company">
+                    <% if current_user.present? && current_user.companies.length > 0 %>
+                        <%= link_to companies_path, {class: "navbarLinks", id: "Companies" }  do %>
+                            <i class="pe-7s-home"></i>
+                            <!--i class="pe-7s-culture"></i-->
+                            <p>Home</p>
+                        <% end %>
+                    <% elsif current_user.present? %>
+                        <%= link_to new_company_path, {class: "navbarLinks", id: "Account" } do %>
+                            <i class="pe-7s-culture"></i>
+                            <p>New Company</p>
+                        <% end %>
+                    <% end %>
+                </li>            
+                <!--li>
+                    <%#= link_to companies_path, {class: "navbarLinks" } do %>
+                        <i class="pe-7s-culture"></i>
+                        <p>Companies</p>
+                    <%# end %> 
+                </li-->                  
+                <li class="">
+                    <%= link_to campaigns_path, {class: "navbarLinks hidden-md hidden-lg" } do %>
+                        <i class="pe-7s-news-paper"></i>
+                        <p>Campaigns</p>
+                    <% end %>
+                </li>
+                <% last_campaign = current_user.campaigns.last if current_user.present? && current_user.campaigns.present? %>
+                <!--li class="">
+                    <%#= link_to campaign_runs_path(campaign), {class: "navbarLinks"} do %>
+                        <i class="pe-7s-print"></i>
+                        <p>Print Orders</p>
+                    <%# end %>
+                </li-->
+                <%# last_campaign = current_user.campaigns.last %>
+                <% if last_campaign.present? %>
+                    <% if last_campaign.runs.where.not(:status => "completed").size == 0 %>
+                        <li class="">
+                            <%= link_to new_campaign_run_path(last_campaign), { class: "navbarLinks" } do %>
+                                <i class="pe-7s-print" aria-hidden="true"></i>
+                                <p>Create Print</p>
+                            <% end %>
+                        </li>
+                        <li class="hidden-xs hidden-sm hidden-md hidden-lg">
+                            <%= link_to companies_path(last_campaign), { class: "navbarLinks", id: "printButton"} do %>
+                                <i class="pe-7s-print" aria-hidden="true"></i>
+                                <p>Create Print</p>
+                            <% end %>
+                        </li>
+
+                    <% end %>
+                    <% last_run = current_user.runs.where.not(:status => "completed").order(created_at: :desc).last %>
+                    <% if last_run.present? %>
+                        <li class="">
+                            <%= link_to campaign_run_path(last_run.campaign, last_run, format: "pdf"), {class: "navbarLinks"} do %>
+                                <i class="pe-7s-cloud-download" aria-hidden="true"></i>
+                                <p>Fliers Pdf</p>
+                            <% end %>
+                        </li>
+
+                        <% if current_user.runs.last.status == "to distribute" %>
+                            <li class="">
+                                <%= link_to  newstatus_run_path(last_run), {class: "navbarLinks"} do %>
+                                    <i class="pe-7s-check" aria-hidden="true"></i>
+                                    <p>Fliers Distributed</p>
+                                <% end %>
+                            </li>
+                        <% end %>                                               
+                    <% end %>
+                <% end %> <!-- last_campaign.present? -->
+            </ul>
+    	</div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Dashboard</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <%= link_to edit_user_registration_path,{class: "navbarLinks", id: "Account"} do %>
+                                Account
+                            <% end %>
+                        </li>
+                        <li>
+                            <%= link_to destroy_user_session_path, method: :delete do %>
+                                Log out
+                            <% end %>
+                        </li>                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">

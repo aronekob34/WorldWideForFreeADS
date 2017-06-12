@@ -1,0 +1,2 @@
+module FlyersHelper
+end

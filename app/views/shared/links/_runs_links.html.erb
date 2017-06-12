@@ -1,0 +1,25 @@
+<%- if controller_name == 'runs' && action_name == 'index' %>
+<div class="content">
+    <div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12 col-sm-2 col-md-2">
+				<%= link_to "New Print", new_campaign_run_path, class: "btn btn-success btn-fill btn-main" %><br />				
+			</div>		
+			<div class="col-xs-12 col-sm-2 col-md-2">
+				<%= link_to "Back", companies_path, class: "btn btn-warning btn-fill btn-main" %><br />				
+			</div>				
+		</div>
+    </div>
+</div>                    
+<% end -%>
+
+<%- if controller_name == 'runs' && action_name == 'show' %>
+<div class="row">
+	<div class="col-xs-12 col-sm-2 col-md-1">
+		<%= link_to "Back", companies_path, class: "btn btn-primary btn-fill pull-left btn-main" %>		
+	</div>						
+	<div class="col-xs-12 col-sm-2 col-md-1">
+		<%= link_to "Print Fliers", campaign_run_path(@campaign, @run, format: "pdf"), class: "btn btn-success btn-fill btn-main" %><br />		
+	</div>									
+</div>
+<% end %>

@@ -1,0 +1,21 @@
+<div class="section section-no-padding">
+    <div class="parallax filter-gradient blue" data-color="blue">
+        <div class="parallax-background">
+            <!--img class ="parallax-background-image"/> <!-- src="assets/img/template/bg3.jpg"-->
+        </div>
+        <div class="info">
+            <p>Subscribe to our newsletter</p>
+            <%= form_tag("/landings", method: "post") do %>
+	            <div class="input-group">
+					<span class="input-group-addon">
+					<i class="fa fa-envelope"></i>
+					</span>
+	            	<%= email_field(:subscription, :email, {class: "form-control emailfield", placeholder: "your@email.com"}) %>
+	            </div>
+            	<%= submit_tag("Submit", {class: "btn btn-fill btn-large btn-primary"}) %>
+            <% end %>
+
+        </div>
+    </div>
+</div>
+

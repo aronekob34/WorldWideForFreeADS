@@ -1,0 +1,12 @@
+<div class="content">
+    <div class="container-fluid">
+
+		<div class="row">
+			<div class="col-md-2">
+				<%- if controller_name == 'campaigns' && action_name == 'index' %>
+				  <%= link_to "New Campaign", new_campaign_path, class: "btn btn-success btn-fill btn-main" %><br />
+				<% end -%>
+			</div>			
+		</div>
+    </div>
+</div>                    

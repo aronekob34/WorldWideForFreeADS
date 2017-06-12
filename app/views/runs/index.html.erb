@@ -1,0 +1,80 @@
+<% run_last = Run.last %>
+<% if @runs.present? %>
+<%# if flash[:warning_run] %>
+    <!--div class="alert alert-warning">
+      <strong>Oh snap!</strong> <%#= flash[:warning_run] %>
+    </div-->               
+<%# end %>  
+
+<% if flash[:warning_run] %>
+    <div class="alert alert-warning">
+      <strong>Great!</strong> <%= flash[:warning_run] %>  
+      <% if run_last.status == "to print" %>
+        <i class="fa fa-download fa-2x messageIcon" aria-hidden="true"></i>
+      <% elsif run_last.status == "to distribute" %>
+        <i class="fa fa-check fa-2x messageIcon" aria-hidden="true"></i>
+      <% end %>
+    </div>               
+<% end %>  
+
+<% if flash[:error_run] %>
+    <div class="alert alert-block alert-danger fade in">
+      <button data-dismiss="alert" class="close close-sm" type="button">
+          <i class="icon-remove"></i>
+      </button>
+      <strong>Oh snap!</strong> <%= flash[:error_run] %>
+    </div>               
+<% end %>  
+
+<% if @runs.length > 0 %>
+<% header("runs#index","Print List") %>
+<%= render "shared/partials/formheader" %>
+<div class="header">
+    <h4 class="title"><%= yield(:runs_index) %></h4>
+</div>            
+<div class="content table-responsive table-full-width">
+    <table class="table table-hover table-striped">
+        <thead class="row">
+          <th class="halfwidth col-xs-7 col-sm-4 col-md-1">Status</th>
+          <th class="hidden-xs hidden-sm">Company</th>
+          <th class="hidden-xs col-sm-4">Campaign</th>
+          <th class="hidden-xs col-sm-1 numeric">Number of Ads</th>
+          <th class="halfwidth options col-xs-5 col-sm-3 col-md-2">Options</th>
+        </thead>
+        <tbody class="row">
+            <% @runs.each do |run| %>
+            <% if run.status != "completed" %>
+              <tr>
+                <td class="halfwidth col-xs-7 col-sm-4 col-md-1"><%= run.status %></td>
+                <td class="hidden-xs hidden-sm"><%= run.campaign.company.name %></td>
+                <td class="hidden-xs col-sm-4"><%= run.campaign.name %></td>
+                <td class="hidden-xs col-sm-1 numeric"><%= run.runprintnumber %></td>  
+                <td class="halfwidth options col-xs-5 col-sm-3 col-md-2">
+                    <div class="btn-group" id="btn-group">
+                    <% if run.status != "to print" && run.status != "completed" %>
+                      <%= link_to newstatus_run_path(run), {class: "btn btn-primary", 'rel' => 'tooltip', 'data-placement' => 'top', 'title'=>"Confirm Print as distributed or completed"} do %><i class="fa fa-check-circle-o" aria-hidden="true"></i><% end %>
+                     <% end %>
+                     <% if run.status != "completed" %>
+                     <%= link_to edit_campaign_run_path(run.campaign, run), {class: "btn btn-success", id: "", 'rel' => 'tooltip', 'data-placement' => 'top', 'title'=>"Edit Print"} do %><i class="fa fa-pencil" aria-hidden="true"></i><% end %>
+
+                     <%= link_to delete_run_path(run.id), {class: "btn btn-danger", 'rel' => 'tooltip', 'data-placement' => 'top', 'title'=>"Delete Print Settings"} do %><i class="fa fa-trash-o" aria-hidden="true"></i><% end %>
+                     
+                     <%= link_to campaign_run_path(run.campaign, run, format: "pdf"), {class: "btn btn-primary", 'rel' => 'tooltip', 'data-placement' => 'top', 'title'=>"Open Pdf File"} do %><i class="fa fa-cloud-download" aria-hidden="true"></i><% end %>                   
+                    <% end %>
+                    </div>
+                </td>
+              </tr>
+            <% end %>
+            <% end %>
+        </tbody>
+    </table>
+
+</div>
+<%= render partial: "shared/partials/formfooter" %>
+<%= render partial: "shared/links/runs_links" %>
+<% end %> <!-- if @runs.present? -->
+<% else %>
+<%= render partial: "shared/links/runs_links" %>
+<% end %>
+
+<!--a href="http://localhost:3000/campaigns/8/runs/33.pdf" download>Export</a-->

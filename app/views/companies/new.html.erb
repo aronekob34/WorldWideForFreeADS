@@ -1,0 +1,87 @@
+<% header("companies","Create Company") %>
+<%= render "shared/partials/formheader" %>
+<div class="header">
+    <h4 class="title"><%= yield(:companies) %></h4>
+</div>  
+<div class="content">
+    <%= simple_form_for @company do |f| %>
+      
+      <div class="card">
+          <%= image_tag "growstartup_english_description.png", class:"companyPicture" %>
+          <!--img src="https://s3.eu-central-1.amazonaws.com/freeads/Growstartup+English+Description.png", class= "companyPicture"-->
+      </div>
+
+      <% if @company.errors['base'].present? %>
+        <span class="help-block error"><%= @company.errors['base'][0] %></span>
+      <% end %>     
+      <%= render 'partials/error_messages', object: @company %>
+      <%= f.input :name %>
+      <%= f.association :companytype, prompt: "Choose a type", class: "form-control" %>
+      <%= f.input :title %>
+      <%= f.input :description, label: "Description - Include up to 6 Best Features", as: :text, class: "description" %>
+      <span class="countdown"></span>
+      <%= f.input :url %>
+
+      <!-- flyers#new -->
+
+      <%= f.input :own_style, label: "Upload your own flyer design? We use A4 paper size (210 x 297 cm)", as: :radio_buttons, :input_html => { 'data-toggle' => "radio" }, :checked => false %>
+      <%#= f.input :worldwide, as: :radio_buttons,:input_html => { 'data-toggle' => "radio" }, wrapper_html: {id: 'worldwide'} %>
+      <%= f.fields_for :flyers do |flyer| %>
+        <%#= flyer.select(:company_id, current_user.companies.collect {|p| [ p.name, p.id ]}, {:selected => @company.id}) %>
+        <div class="flyer_fields">
+          <%= flyer.label :language_id, "Select the Language of the Flyer"%>
+          <%= flyer.select(:language_id, Language.all.collect{|l| [l.name, l.id]}, {:selected => "EN"}, {:class => "form-control"}) %>
+          <%= flyer.label :image, "add your flier image..." %>
+          <%= flyer.file_field :image, class: "form-control" %>
+        </div>
+      <% end %>      
+
+      <div class="clearfix"></div>
+</div>
+<%= render partial: "shared/partials/formfooter" %>
+
+<% subtitle "Advertising Campaign" %> 
+<%= render "shared/partials/formsubheader" %>
+<div class="content">
+      <%= f.simple_fields_for @campaign do |c| %>
+        <% if @campaign.errors['base'].present? %>
+          <span class="help-block error"><%= @campaign.errors['base'][0] %></span>
+        <% end %>  
+        <%= c.input :name %>
+        <%= c.input :worldwide, as: :radio_buttons, :input_html => { 'data-toggle' => "radio" }, wrapper_html: {id: 'worldwide'} %>
+        <div class="checkboxes">
+          <div class="checkbox">
+            <%= c.label :america %> 
+            <%= c.check_box :america, { value: "0", 'data-toggle' => "checkbox"} %>
+          </div> 
+          <div class="checkbox">
+            <%= c.label :europe %> 
+            <%= c.check_box :europe, { value: "0", 'data-toggle' => "checkbox"} %>
+          </div> 
+          <div class="checkbox">
+            <%= c.label :asia %> 
+            <%= c.check_box :asia, { value: "0", 'data-toggle' => "checkbox"} %>
+          </div> 
+          <div class="checkbox">
+            <%= c.label :oceania %> 
+            <%= c.check_box :oceania, { value: "0", 'data-toggle' => "checkbox"} %>
+          </div>                                                                  
+        </div>
+        <%= c.association :campaigntype, prompt: "Choose a Campaign type", class: "form-control" %>
+        <!--div class="form-group select required">        
+          <%#= c.label :company_id %>
+          <%# if @company.present? %>
+            <%#= c.select(:company_id, current_user.companies.collect {|p| [ p.name, p.id ]}, {:selected => @company.id }, {:class => "form-control"}) %> 
+          <%# else %>
+            <%#= c.select(:company_id, current_user.companies.collect {|p| [ p.name, p.id ]}, {}, {:class => "form-control"}) %> 
+          <%# end %>                
+        </div> 
+      <% end %> <! end of simple fields for -->
+
+
+      <%= link_to "Back", companies_path, class: "btn btn-primary btn-fill pull-left btn-main" %>
+      <%= f.button :submit, class: "btn btn-info btn-fill pull-right btn-main" %>
+      <div class="clearfix"></div>
+<% end %> <!-- end of the form -->
+</div>
+<%= render partial: "shared/partials/formfooter" %>

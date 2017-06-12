@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="384pt" height="384pt" viewBox="0 0 384 384" version="1.1">
+<g id="surface1">
+<path style=" stroke:none;fill-rule:evenodd;fill:rgb(0%,38.039216%,95.294118%);fill-opacity:1;" d="M 0 0 L 576 0 L 576 42.667969 L 0 42.667969 Z M 0 0 "/>
+<path style=" stroke:none;fill-rule:evenodd;fill:rgb(100%,100%,100%);fill-opacity:1;" d="M 0 42.667969 L 576 42.667969 L 576 85.332031 L 0 85.332031 Z M 0 42.667969 "/>
+<path style=" stroke:none;fill-rule:evenodd;fill:rgb(0%,38.039216%,95.294118%);fill-opacity:1;" d="M 0 85.332031 L 576 85.332031 L 576 128 L 0 128 Z M 0 85.332031 "/>
+<path style=" stroke:none;fill-rule:evenodd;fill:rgb(100%,100%,100%);fill-opacity:1;" d="M 0 128 L 576 128 L 576 170.667969 L 0 170.667969 Z M 0 128 "/>
+<path style=" stroke:none;fill-rule:evenodd;fill:rgb(0%,38.039216%,95.294118%);fill-opacity:1;" d="M 0 170.667969 L 576 170.667969 L 576 213.332031 L 0 213.332031 Z M 0 170.667969 "/>
+<path style=" stroke:none;fill-rule:evenodd;fill:rgb(100%,100%,100%);fill-opacity:1;" d="M 0 213.332031 L 576 213.332031 L 576 256 L 0 256 Z M 0 213.332031 "/>
+<path style=" stroke:none;fill-rule:evenodd;fill:rgb(0%,38.039216%,95.294118%);fill-opacity:1;" d="M 0 256 L 576 256 L 576 298.667969 L 0 298.667969 Z M 0 256 "/>
+<path style=" stroke:none;fill-rule:evenodd;fill:rgb(100%,100%,100%);fill-opacity:1;" d="M 0 298.667969 L 576 298.667969 L 576 341.332031 L 0 341.332031 Z M 0 298.667969 "/>
+<path style=" stroke:none;fill-rule:evenodd;fill:rgb(0%,38.039216%,95.294118%);fill-opacity:1;" d="M 0 341.332031 L 576 341.332031 L 576 384 L 0 384 Z M 0 341.332031 "/>
+<path style=" stroke:none;fill-rule:evenodd;fill:rgb(0%,38.039216%,95.294118%);fill-opacity:1;" d="M 0 0 L 213.332031 0 L 213.332031 213.332031 L 0 213.332031 Z M 0 0 "/>
+<path style=" stroke:none;fill-rule:evenodd;fill:rgb(100%,100%,100%);fill-opacity:1;" d="M 85.332031 0 L 128 0 L 128 213.332031 L 85.332031 213.332031 Z M 85.332031 0 "/>
+<path style=" stroke:none;fill-rule:evenodd;fill:rgb(100%,100%,100%);fill-opacity:1;" d="M 0 85.332031 L 213.332031 85.332031 L 213.332031 128 L 0 128 Z M 0 85.332031 "/>
+</g>
+</svg>

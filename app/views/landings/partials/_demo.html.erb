@@ -1,0 +1,35 @@
+<div class="section section-demo">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 demofeatures">
+                <div id="description-carousel" class="carousel fade" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="item" id="carouselContainer">
+                            <%= image_tag "hands-1167612_1920.jpg" %>
+                            <!--img src="https://s3.eu-central-1.amazonaws.com/freeads/hands-1167612_1920.jpg"-->
+                        </div>
+                        <div class="item active">
+                            <%= image_tag "phone-869669_1920.jpg" %>
+                            <!--img src="https://s3.eu-central-1.amazonaws.com/freeads/phone-869669_1920.jpg"-->
+                        </div>
+                        <div class="item">
+                            <%= image_tag "qr-code-156717_1280.png", id: "qrScan" %>
+                            <!--img src="https://s3.eu-central-1.amazonaws.com/freeads/qr-code-156717_1280.png" id="qrScan">-->
+                        </div>
+                    </div>
+                    <ol class="carousel-indicators carousel-indicators-blue">
+                        <li data-target="#description-carousel" data-slide-to="0" class=""></li>
+                        <li data-target="#description-carousel" data-slide-to="1" class="active"></li>
+                        <li data-target="#description-carousel" data-slide-to="2" class=""></li>
+                    </ol>
+                </div>
+            </div>
+            <div class="col-md-5 col-md-offset-1 flexbox">
+                <h4 class="header-text">QR SURVEYS</h4>
+                <p>
+                    Want to ask something to your potential customer? Do they like games or they want to purchase a travel App? In Japan ask it with:<br> こんにちは <br> just tell us what you want to ask, we will build a Mobile Survey that people will be able to do on the street by visiting the QR Code
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,238 @@
+/* simple_form */
+/* dots below required * */
+
+abbr[title] {
+	border: 0px;
+}
+
+/* Fields Errors from validations */
+
+.field_with_errors:nth-of-type(2) {
+	border: solid red 1px;
+}
+
+label .field_with_errors {
+	border: none;
+}
+
+/* GET registrations#new */
+
+#error_explanation {
+	color: red;
+}
+
+/* GET companies#index */ 
+	/* Options column style for icons buttons */
+
+ .table .btn {
+ 	border-radius: 10%;
+ 	padding: 0px 6px;
+ }
+
+
+ .table .fa-info {
+ 	padding: 0px 2px;
+ }
+
+.options {
+	text-align: center;
+}
+
+/* Statistics Bar*/
+
+/* Make sure that padding behaves as expected */
+* {box-sizing:border-box}
+
+/* Container for skill bars */
+.container {
+    width: 100%; /* Full width */
+    background-color: #ddd; /* Grey background */
+    padding: 0px;
+}
+
+.skills {
+    text-align: right; /* Right-align text */
+    padding-right: 20px; /* Add so: ;me right padding */
+    line-height: 40px; /* Set the line-height to center the text inside the skill bar, and to expand the height of the container */
+    color: white; /* White text color */
+}
+
+.first {width: 90%; background-color: #4CAF50;} /* Green */
+.second {width: 80%; background-color: #2196F3;} /* Blue */
+.third {width: 65%; background-color: #f44336;} /* Red */
+.fourth {width: 60%; background-color: #808080;} /* Dark Grey */
+
+.statistics {
+	margin-top: 10px;
+}
+
+/* GET companies#new */
+
+.checkboxes {
+	display: none;
+}
+
+.companyPicture {
+	width: 52%;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.form-group.text.required.company_description {
+	margin-bottom: 11px;
+}
+
+.form-group.url.required.company_url {
+	margin-top: 11px;
+}
+
+.countdown {
+	color: #8c8c8c;
+	font-size: 13px;
+}
+
+/* GET companies#show */
+
+.flyer_image {
+	width: 80%;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+/* Sidebar */
+
+.sidebar {
+	background-image: image-url("sidebar-4.jpg")
+}
+
+/* GET campaigns#index */
+
+.flag {
+	height: 24px;
+}
+
+.flagsmall {
+	height: 31px;
+}
+
+.messageIcon {
+	margin-left: 25px;
+}
+
+/* GET campaigns#new */
+
+.new_campaign .checkbox {
+	color: #cccccc;
+}
+
+/* GET runs#show */
+
+.numeric {
+	text-align: right;
+}
+
+/* GET runs#new */
+
+.error {
+	color: red;
+}
+
+.card form [class*="col-"]:first-child {
+	padding: 0px;
+}
+
+.form-group-fix {
+	margin-bottom: 5px;
+}
+
+/* POST qrcodes#create */
+
+table.qr-code {
+  border-width: 0;
+  border-style: none;
+  border-color: #0000ff;
+  border-collapse: collapse;
+}
+table.qr-code td {
+  border-width: 0;
+  border-style: none;
+  border-color: #0000ff;
+  border-collapse: collapse;
+  padding: 0;
+  margin: 0;
+  width: 15px;
+  height: 15px;
+}
+table.qr-code td.black { background-color: #000; }
+table.qr-code td.white { background-color: #fff; }
+
+
+/* Media queries */ 
+
+@media (max-width: 982px) {
+	span.titleBar {
+		position: relative;
+		top: 4px;
+	}
+}
+
+
+@media (max-width: 940px) {
+	.flag {
+		height: 10px;
+	}
+
+	.flagsmall {
+		height: 14px;
+	}
+}
+
+@media (max-width: 767px) {
+	.table-responsive > .table > tbody > tr > td {
+		/* before no-wrap */
+		white-space: initial;
+	}
+
+	.table .btn {
+		padding: 11px 12px;
+		margin: 5px 5px;
+		float: right;
+	}
+
+	.btn-main {
+		width: 100%;
+		margin-bottom: 12px;
+	}
+
+}
+
+@media (max-width: 533px) {
+	.companyPicture {
+		width: 95%;
+	}
+}
+
+@media (max-width: 360px) {
+	.table-responsive > .table > tbody > tr > td {
+		white-space: initial;
+	}
+
+	.table .btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+	border-radius: 5px;
+	}
+
+	#display {
+		display: none;
+	}
+
+	.halfwidth {
+		width: 50%;
+	}
+
+	/* fixing samsung galaxy runs#index options */
+
+}

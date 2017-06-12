@@ -1,0 +1,40 @@
+<% title "Display Campaign" %>
+<%= render "shared/partials/formheader" %>
+        <div class="content">
+            <%= simple_form_for @campaign do |f| %>
+              <%= f.input :name, disabled: true %>
+              <%# binding.pry %>
+              <%= f.input :worldwide, as: :radio_buttons,:input_html => { 'data-toggle' => "radio" }, wrapper_html: {id: 'worldwide'}, disabled: true %>
+              <div class="">
+                <div class="checkbox">
+                  <%= f.label :america %> 
+                  <%= f.check_box :america, { value: "0", 'data-toggle' => "checkbox", disabled: true} %>
+                </div> 
+                <div class="checkbox">
+                  <%= f.label :europe %> 
+                  <%= f.check_box :europe, { value: "0", 'data-toggle' => "checkbox", disabled: true} %>
+                </div> 
+                <div class="checkbox">
+                  <%= f.label :asia %> 
+                  <%= f.check_box :asia, { value: "0", 'data-toggle' => "checkbox", disabled: true} %>
+                </div> 
+                <div class="checkbox">
+                  <%= f.label :oceania %> 
+                  <%= f.check_box :oceania, { value: "0", 'data-toggle' => "checkbox", disabled: true} %>
+                </div>                                                                  
+              </div>
+              <%= f.association :campaigntype, prompt: "Choose a Campaign type", class: "form-control", disabled: true %>
+              <div class="form-group select required">
+                <%= f.label :company_id %>
+                <% if @company.present? %>
+                  <%= f.select(:company_id, current_user.companies.collect {|p| [ p.name, p.id ]}, {:selected => @company.id }, {:class => "form-control", disabled: true}, disabled: true) %> 
+                <% else %>
+                  <%= f.select(:company_id, current_user.companies.collect {|p| [ p.name, p.id ]}, {}, {:class => "form-control", disabled: true}) %> 
+                <% end %>                
+              </div>
+              <%= link_to "Back", companies_path, class: "btn btn-primary btn-fill pull-left btn-main" %>
+              <%#= f.button :submit, class: "btn btn-info btn-fill pull-right" %>
+              <div class="clearfix"></div>
+            <% end %>
+        </div>
+<%= render partial: "shared/partials/formfooter" %>

@@ -1,0 +1,41 @@
+<div class="parallax filter-gradient blue" data-color="blue">
+    <div class="parallax-background">
+        <%#= image_tag("bg3.jpg", class: "parallax-background-image") %>
+    </div>
+    <div class= "container">
+        <div class="row">
+        <div class="messages col-xs-12 col-sm-12 col-md-12">
+            <%= render partial: "partials/flash" %>    
+        </div>
+            <div class="col-md-5 hidden-xs">
+                <div class="parallax-image">                        
+                    <%= image_tag("iphone3.png", class: "phone", style:"margin-top: 20px") %>
+                    <%#= link_to "Sign Up", new_user_registration_path, class: "btn btn-fill btn-wd btn-primary parallax-button" %>
+                    <%= button_to "Sign Up", new_user_registration_path, class: "btn btn-fill btn-wd btn-info parallax-button", id: "bouncing-button", :method => :get%>
+                </div>
+            </div>
+            <div class="col-md-6 col-md-offset-1 flexbox">
+                <div class="description">
+                    <h2>Everywhere</h2>
+                    <br>
+                    <h5>Start a Global Advertising Campaign by teaming up with other Startups and get your Ads Worldwide for free</h5>
+                </div>
+                <div class="buttons">
+                    <button class="btn btn-fill btn-neutral desktop" id="bouncing-button">
+                    <i class="fa fa-apple"></i> Appstore
+                    </button>
+                    <button class="btn btn-fill btn-neutral mobile" id="bouncing-button">
+                    <i class="fa fa-apple"></i>
+                    </button>                    
+                    <button class="btn btn-simple btn-neutral" id="bouncing-button">
+                    <i class="fa fa-android"></i>
+                    </button>
+                    <button class="btn btn-simple btn-neutral" id="bouncing-button">
+                    <i class="fa fa-windows"></i>
+                    </button>
+                    <%= link_to "Sign Up", new_user_registration_path, {class: "btn btn-fill btn-neutral", id: "bouncing-button"}%>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

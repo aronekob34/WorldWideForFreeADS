@@ -1,0 +1,54 @@
+<% title "Display Print Order" %>
+<%= render "shared/partials/formheader" %>
+        <div class="content">
+            <%= simple_form_for [@campaign, @run] do |f| %>
+              <%= f.association :campaign, disabled: true %>
+              <%= f.input :runprintnumber, disabled: true %>
+              <%= f.input :ownads, disabled: true %>
+              <%= render partial: "shared/links/runs_links" %>
+              <div class="clearfix"></div>
+            <% end %>
+        </div>
+<%= render partial: "shared/partials/formfooter" %>
+
+<% if @ads.length > 0 %>
+<% header("ads","Ads Printed") %>
+<%= render "shared/partials/formheader" %>
+<div class="header">
+    <h4 class="title"><%= yield(:ads) %></h4>
+</div>            
+<div class="content table-responsive table-full-width">
+    <table class="table table-hover table-striped">
+        <thead class="row">
+          <th class="">Company Name</th>
+          <th class="numeric">N.Visits</th>
+          <th class="hidden-xs options">SelfPromotion</th>
+          <th class="options col-xs-8 col-sm-3 col-md-2">Options</th>
+        </thead>
+        <tbody class="row">
+            <% @ads.each do |ad| %>
+            <tr>
+              <td class=""><%= ad.company.name %></td>
+              <td class="numeric"><%= ad.visits %></td>
+              <td class="hidden-xs options">
+              <% if ad.selfpromotion %>
+              <i class="fa fa-check" aria-hidden="true"></i>
+              <% else %>
+              <i class="fa fa-times" aria-hidden="true"></i>
+              <% end %> 
+              </td>
+              <td class="options col-xs-8 col-sm-3 col-md-2">
+                  <div class="btn-group" id="btn-group">
+                   <%= link_to ad_path(ad.id), class: "btn btn-primary" do %><i class="fa fa-arrow-right" aria-hidden="true"></i><% end %>
+                  </div>
+              </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+
+</div>
+<%= render partial: "shared/partials/formfooter" %>
+<% else %>
+<%= render partial: "shared/links/runs_links" %>
+<% end %>

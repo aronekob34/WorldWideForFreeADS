@@ -1,0 +1,10 @@
+//= require jquery
+//= require jquery.turbolinks
+//= require jquery_ujs
+//= require jquery-ui
+//= require bootstrap-sprockets
+//= require awesome-landing-page
+//= require olark
+//= require cookieconsent
+//= require landingscript
+//= require turbolinks

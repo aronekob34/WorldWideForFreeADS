@@ -1,0 +1,30 @@
+<% i = 0 %>
+
+<% header("statistics", "Total Visits") %>
+<%= render "shared/partials/formheader" %>
+<div class="header">
+    <h4 class="title"><%= yield(:statistics) %></h4>
+</div>  
+<div class="container-fluid" style="padding-bottom: 25px;">
+	<% @partial_visits.each_pair do |company_id, visits| %>
+	  	<% visits_perc = BigDecimal.new(visits) / BigDecimal.new(@total_visits) * 100.to_i %>
+	  	<% if visits_perc > 0.1 %>
+		<%# unless visits == 0 %>
+			<div class="row statistics">
+				<div class="col-md-2 col-sm-2 col-xs-5" style="margin-top: 8px;">
+					<p><%= Company.find(company_id).name %></p>
+				</div>
+				<div class="col-md-10 col-sm-10 col-xs-7">
+					<div class="container">
+					  <div class="<%= @style[i] %>" style="width:<%= visits_perc %>%;">
+					  	<%= visits %>	
+					  </div>
+					  <%# binding.pry %>
+					</div>
+				</div>
+			</div>				
+			<% i += 1 %>
+		<% end %>
+	<% end %>
+</div>
+<%= render partial: "shared/partials/formfooter" %>

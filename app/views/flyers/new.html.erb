@@ -1,0 +1,7 @@
+<%= form.fields_for [@company, @flyer] do |flyer| %>
+	<%#= flyer.select(:company_id, current_user.companies.collect {|p| [ p.name, p.id ]}, {:selected => @company.id}) %>
+	<%= flyer.select(:language_id, Language.all.collect{|l| [l.name, l.id]}, {:selected => "EN"}) %>
+	add an image...
+	<%= f.file_field :image %>
+
+<% end %>
